@@ -1,0 +1,17 @@
+name: ETL CI/CD with Docker Compose
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  etl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Compose
+        run: |
+          docker-compose up --build --abort-on-container-exit
